@@ -25,7 +25,7 @@ agent session on 2026-09-25.
 | OB-0001 | The initial kernel is Linux. | Eldora OS (initial) | ACTIVE | — |
 | OB-0002 | The provisional project name is "Eldora OS". | Project | ACTIVE | Subject to brand/trademark clearance (Q-0010). TRADEMARK CLEARANCE: PENDING. |
 | OB-0003 | The provisional tagline is "Simple. Powerful. Yours." | Project | ACTIVE | Subject to brand/trademark clearance (Q-0010). |
-| OB-0004 | Eldora OS V1 is Fedora-derived (uses the Fedora ecosystem). | V1 only | ACTIVE | Not necessarily a permanent constraint for future versions. The composition approach within the Fedora ecosystem is not selected (Q-0001). |
+| OB-0004 | Eldora OS V1 is Fedora-derived (uses the Fedora ecosystem). | V1 only | ACTIVE | Not necessarily a permanent constraint for future versions. The composition approach within the Fedora ecosystem is not selected (Q-0001). **Confirmed** by the Project Owner on 2026-09-26 (decision D13) after human review of RES-0001 and RES-0002 (Q-0013); the confirmation applies to V1 only and selects no composition, update or desktop technology. |
 
 ## Approval evidence
 
@@ -40,3 +40,26 @@ git log --reverse --format='%H %an %ad' -- docs/project/OWNER-BASELINES.md
 
 Owner Baselines added or changed later must record their own approval
 evidence in this file.
+
+### OB-0004 confirmation (2026-09-26)
+
+Confirmed by: Project Owner (decision D13), after human review of RES-0001
+and RES-0002; recorded in
+[`reviews/WAVE-0.1A-0.1X-REVIEW.md`](reviews/WAVE-0.1A-0.1X-REVIEW.md).
+The baseline's content, scope (V1 only) and status (`ACTIVE`) are unchanged.
+Confirmation evidence: the first commit made by the Project Owner that
+contains this confirmation note.
+
+### OB-0004 interpretation (2026-09-26)
+
+Clarified by the Project Owner (decision D20); the baseline's content is
+unchanged. For Eldora OS V1, "Fedora-derived" means that Fedora is the
+principal upstream family/ecosystem of the system base. It does not mean
+that CentOS Stream or EPEL are the base of Eldora OS V1. CentOS Stream, EPEL
+or other related projects may be used as component sources, references,
+tools or complementary dependencies only when a later decision justifies
+that use; such use does not by itself change the Fedora-derived
+classification. A change in which CentOS Stream, RHEL, Debian, Ubuntu or any
+other family effectively becomes the principal base of Eldora OS V1
+requires an explicit review of this Owner Baseline. No such component is
+selected by this clarification.

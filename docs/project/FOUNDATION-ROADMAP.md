@@ -67,9 +67,9 @@ Exit criteria:
 
 ## Wave 0.1 — Fedora-derived Base System Composition
 
-Status: PLANNED (authorized for preparation; not started)
+Status: IN PROGRESS (stages 0.1A and 0.1X CLOSED; 0.1B authorized for preparation, not started)
 Questions: Q-0001, Q-0008
-Baseline: OB-0004 (Eldora OS V1 is Fedora-derived)
+Baseline: OB-0004 (Eldora OS V1 is Fedora-derived; confirmed for V1 by the Project Owner on 2026-09-26, D13)
 
 Research question: within the Fedora ecosystem, which base-system
 composition approach best meets Eldora OS V1 requirements, and how do
@@ -109,6 +109,66 @@ Deliverables:
 - optionally, ADRs in state PROPOSED.
 
 Exit criteria: C1–C6.
+
+### Wave 0.1 research stages
+
+Stages are research steps inside Wave 0.1; they use the wave statuses above.
+The Wave 0.1 exit criteria (C1–C6) apply to the wave as a whole. Stage
+closures were recorded on explicit Project Owner instruction (D13–D16,
+2026-09-26); see
+[`reviews/WAVE-0.1A-0.1X-REVIEW.md`](reviews/WAVE-0.1A-0.1X-REVIEW.md).
+
+#### Wave 0.1A — Fedora Ecosystem & Base-System Composition Models
+
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
+Report: RES-0001 (REVIEWED)
+
+Complete as a research stage. It does not select a composition model:
+bootc/OCI (M3) is the principal candidate for investigation; package-based
+(M1) is a mandatory fallback candidate; OSTree/rpm-ostree (M2) is not a
+preferred target for a new architecture but remains relevant evidence.
+Q-0001 and Q-0008 remain undecided.
+
+#### Wave 0.1X — Base Distribution Challenge (extraordinary)
+
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
+Questions: Q-0013
+Report: RES-0002 (REVIEWED)
+Position: extraordinary investigation inserted between stages 0.1A and 0.1B.
+
+Directed by the Project Owner on 2026-09-26 to challenge OB-0004 before
+significant implementation. It explicitly compared Fedora, Ubuntu and
+Debian; this was a Project Owner-directed exception to the Wave 0.1
+out-of-scope item "comparing Fedora against non-Fedora bases" and does not
+change that item for other Wave 0.1 research. "0.1X" is not a general
+numbering pattern.
+
+Outcome: the Project Owner confirmed OB-0004 for V1 (D13). The discovered
+alternative GNOME OS / freedesktop-sdk is kept only as an architectural
+reference for future investigation (D16). The block on Wave 0.1B that
+existed only pending human review of 0.1X is removed.
+
+#### Wave 0.1B — System Image / Root Filesystem / Package Ownership
+
+Status: PLANNED (authorized for preparation; not started)
+
+Inputs: open questions forwarded by RES-0001 (0.1B list) and the
+considerations in RES-0002; tracked risks RISK-0001 to RISK-0004
+([`RISK-REGISTER.md`](RISK-REGISTER.md)).
+
+#### Wave 0.1C — Update / Rollback / Recovery
+
+Status: PLANNED
+
+#### Wave 0.1D — Image Build / Boot / Release Pipeline
+
+Status: PLANNED
 
 ## Wave 0.2 — Desktop / Wayland Foundation
 

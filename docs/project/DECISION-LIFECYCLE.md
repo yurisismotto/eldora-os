@@ -10,6 +10,7 @@ records (ADR, GDR, LDR, BDR) and SPECs. Decision authority is defined in
 | Artifact | ID format | Location |
 |---|---|---|
 | Owner Baseline | `OB-NNNN` | [`OWNER-BASELINES.md`](OWNER-BASELINES.md) |
+| Risk | `RISK-NNNN` | [`RISK-REGISTER.md`](RISK-REGISTER.md) |
 | Question | `Q-NNNN` | [`../adr/DECISION-REGISTER.md`](../adr/DECISION-REGISTER.md) |
 | Research report | `RES-NNNN` | `docs/research/<phase-dir>/RES-NNNN-<slug>.md` (see [`../research/README.md`](../research/README.md)) |
 | Architecture Decision Record | `ADR-NNNN` | `docs/adr/ADR-NNNN-<slug>.md` |
@@ -38,7 +39,25 @@ artifact:
 ADRs are reserved for architectural decisions. A non-architectural decision
 must not be turned into an ADR merely to close a question. A question that
 crosses categories may reference more than one resolution artifact; it is
-`DECIDED` only when every required record is `ACCEPTED`.
+`DECIDED` only when every required record is `ACCEPTED`, except as allowed
+by "Questions resolved by an Owner Baseline" below.
+
+### Questions resolved by an Owner Baseline
+
+Added by Project Owner decision D17 (2026-09-26). A question may be
+resolved by an Owner Baseline instead of a decision record when the
+Project Owner explicitly creates, confirms, changes, supersedes or retires
+that Owner Baseline, provided that:
+
+1. the evidence of the Project Owner's action is recorded (in
+   [`OWNER-BASELINES.md`](OWNER-BASELINES.md) and, where applicable, a
+   review record);
+2. the Decision Register points to the Owner Baseline as the resolution;
+3. the question is not being used to bypass an ADR that a new
+   architectural decision would require.
+
+An Owner Baseline is never turned into an ADR merely to satisfy this
+lifecycle.
 
 ## Links
 
@@ -67,7 +86,7 @@ it references are updated in the same change.
 | `RESEARCHED` | Research is REVIEWED; no recommendation yet. |
 | `RECOMMENDED` | A reviewed research report contains a recommendation. |
 | `PROPOSED` | A resolution record in state PROPOSED exists for the question. |
-| `DECIDED` | Every required resolution record is ACCEPTED. |
+| `DECIDED` | Every required resolution record is ACCEPTED, or the question is resolved by an Owner Baseline action under "Questions resolved by an Owner Baseline". |
 | `WITHDRAWN` | The question is no longer relevant (terminal). |
 | `REOPENED` | A decided or proposed question must be revisited. |
 
@@ -81,6 +100,7 @@ Valid transitions:
 | RECOMMENDED | PROPOSED | anyone (by creating a resolution record in PROPOSED) |
 | RECOMMENDED | IN RESEARCH | anyone |
 | PROPOSED | DECIDED | Project Owner (by accepting the required records) |
+| IN RESEARCH, RESEARCHED, RECOMMENDED, PROPOSED | DECIDED | Project Owner, only by an explicit Owner Baseline action meeting the conditions in "Questions resolved by an Owner Baseline" |
 | PROPOSED | REOPENED | Project Owner (record rejected or withdrawn) |
 | DECIDED | REOPENED | Project Owner |
 | REOPENED | IN RESEARCH, PROPOSED | anyone, after reopening |
