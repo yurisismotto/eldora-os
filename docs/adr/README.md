@@ -21,4 +21,6 @@ Research and recommendations do not automatically become ADR decisions.
 The Decision Register is kept in this directory during the Foundation phase;
 it indexes questions of all types. Its location may be reconsidered later.
 
-No ADR exists yet.
+ADRs:
+
+- [ADR-0001](ADR-0001-v1-base-composition-bootc-oci.md) — V1 base-system composition: Fedora-derived image-based system using bootc/OCI (M3) — ACCEPTED 2026-09-26.
