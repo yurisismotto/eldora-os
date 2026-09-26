@@ -32,8 +32,13 @@ in [`AGENTS.md`](../../AGENTS.md); they do not duplicate this state.
       REVIEWED (approved with editorial corrections). Read-only research;
       no probes executed. Review:
       [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md).
-    - 0.1C-B — Update Policy, Trust & Freshness Semantics: PLANNED; not
-      started.
+    - 0.1C-B — Update Policy, Trust & Freshness Semantics: CLOSED (by
+      the Project Owner on 2026-09-26);
+      [RES-0007](../research/wave-0/RES-0007-update-policy-trust-freshness-semantics.md)
+      REVIEWED (approved as research, 2026-09-26). Read-only research; no
+      probe executed; R1–R9 are not final decisions; no implementation
+      authorised. Review and Project Owner conclusions:
+      [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md#review-of-res-0007-wave-01c-b).
     - 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics: PLANNED;
       not started.
     - 0.1C-F — Experimental Validation & Failure Injection: PLANNED; not
@@ -130,6 +135,13 @@ by the Project Owner (review record 0.1C, 2026-09-26):
 |---|---|---|---|
 | P-01 | RISK-0010 `/boot` layout (H-L1/H-L2) | EARLY FACT-FINDING PROBE | Resolves the H-L1/H-L2 factual uncertainty related to RISK-0010. |
 | P-02 to P-16 | See RES-0006 | PLANNED FOR 0.1C-F | Unless later research documents a reason to re-order them. |
+
+Proposed in RES-0007 (Wave 0.1C-B). **None has been executed.** Preserved
+at Project Owner review (review record 0.1C, 2026-09-26):
+
+| Probe | Subject | Classification | Condition |
+|---|---|---|---|
+| P-17 to P-24; extensions of P-04, P-06, P-12, P-13, PX6 | See RES-0007 | PROPOSED; preserved for 0.1C-F | Unless the Project Owner schedules them otherwise. |
 
 ## Architectural references for future investigation
 

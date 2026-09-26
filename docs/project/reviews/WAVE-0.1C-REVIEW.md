@@ -2,8 +2,8 @@
 
 | Field | Value |
 |---|---|
-| Reviewed stage | Wave 0.1C-A — Update State Machine & Failure Semantics (parent Wave 0.1C — Update / Rollback / Recovery) |
-| Reviewed report | [RES-0006](../../research/wave-0/RES-0006-update-state-machine-failure-semantics.md) |
+| Reviewed stages | Wave 0.1C-A — Update State Machine & Failure Semantics; Wave 0.1C-B — Update Policy, Trust & Freshness Semantics (parent Wave 0.1C — Update / Rollback / Recovery) |
+| Reviewed reports | [RES-0006](../../research/wave-0/RES-0006-update-state-machine-failure-semantics.md) (0.1C-A); [RES-0007](../../research/wave-0/RES-0007-update-policy-trust-freshness-semantics.md) (0.1C-B) |
 | Reviewer | Project Owner (human review) |
 | Review date | 2026-09-26 |
 | Recorded by | Agent (Claude Code), on explicit Project Owner instruction given to an agent session on 2026-09-26 |
@@ -106,3 +106,108 @@ criteria; lifting the blocker remains a Project Owner decision.
 - ADR-0001 remains `ACCEPTED`; it is not reopened.
 - Wave 0.1C remains IN PROGRESS. Waves 0.1C-B, 0.1C-C and 0.1C-F are
   PLANNED and not started; this review does not start 0.1C-B.
+
+## Review of RES-0007 (Wave 0.1C-B)
+
+| Report | Transition | Result | Review outcome |
+|---|---|---|---|
+| [RES-0007](../../research/wave-0/RES-0007-update-policy-trust-freshness-semantics.md) | DRAFT → REVIEWED (reviewed by the Project Owner on 2026-09-26) | REVIEWED | APPROVED AS RESEARCH |
+
+Reviewer: Project Owner (human review), 2026-09-26. Recorded by: agent
+(Claude Code), on explicit Project Owner instruction given to an agent
+session on 2026-09-26. Approval evidence: the first commit made by the
+Project Owner that contains this section.
+
+The approval **does not** accept recommendations R1–R9 as final
+architectural decisions, **does not** accept the candidate requirements of
+RES-0007 (`R-…`, `HC-…`, `HD-…`) and **does not** authorise any
+implementation. RES-0007's distinction between FACT, INFERENCE,
+RECOMMENDATION, CANDIDATE REQUIREMENT and DECISION is preserved.
+
+### Project Owner conclusions recorded
+
+1. The separation between integrity, authenticity, authorization,
+   freshness and anti-rollback is accepted.
+2. H1 is accepted as **REFUTED**: OCI content addressing plus image
+   signature verification alone are insufficient for Eldora's complete
+   update trust model.
+3. Eldora must own the semantics of channel authorization, freshness and
+   anti-rollback. This **must not** be interpreted as authorization to
+   invent a new Eldora-specific cryptographic protocol.
+4. The concrete metadata framework remains **OPEN**: full TUF; an
+   appropriate TUF profile/subset; or another established equivalent
+   mechanism. Established, auditable security protocols/frameworks are
+   preferred over custom cryptographic protocol design unless later
+   evidence demonstrates a compelling reason otherwise. Final selection
+   belongs to the appropriate ADR / Wave 0.1D work.
+5. R2 is accepted as the **architectural direction for later decision**:
+   automatic, privacy-minimal check → policy-gated fetch/verify/stage →
+   user-initiated or user-scheduled apply/restart for personal devices.
+   Unintended ordinary reboots must not silently acquire "apply update"
+   semantics. Managed-device deadlines/windows remain a separate profile
+   concern.
+6. H4 is accepted as **REFUTED**. Release channels are Eldora
+   authorization concepts. Mutable OCI tags may be aliases/discovery
+   mechanisms but must not constitute the authoritative channel security
+   state. Signed metadata binding channel → monotonic version → digest
+   remains the working direction pending ADR.
+7. R5 / RES-0007 Part 16 anti-rollback principles are accepted as
+   **mandatory input to Wave 0.1C-C, not as a final ADR**:
+   - anti-rollback applies to newly selected/fetched targets;
+   - retained, already-verified deployments remain eligible for local
+     rollback;
+   - floor advancement depends on the 0.1C-C known-good decision;
+   - security epoch/min-version remains distinct from the ordinary
+     high-water mark;
+   - below-floor recovery requires explicit local owner action;
+   - rolled-back bad targets require suppression to avoid automatic
+     re-application loops.
+8. H5 is accepted **WITH CONDITIONS**: offline operation may preserve
+   integrity, authenticity, authorization and counter-based anti-rollback,
+   but absolute freshness/freeze detection cannot be claimed without fresh
+   trusted metadata/time. Offline/stale freshness must therefore be
+   explicit and owner-visible rather than silently treated as fresh.
+9. Compromise recovery remains a **first-class 0.1D requirement**. A
+   single online signing key must not be frozen as Eldora's final trust
+   architecture. An offline/threshold root or an established equivalent
+   recovery authority remains to be evaluated.
+10. Explicitly deferred questions are preserved:
+    - **0.1C-C** owns known-good/floor advancement, automatic rollback
+      semantics, loop suppression, retention/pinning interactions,
+      downgrade state compatibility and update-success semantics;
+    - **0.1D** owns signing format/tooling, key custody/rotation/recovery,
+      registry/mirrors, freshness publication operations,
+      provenance/SBOM, installer trust bootstrap and related supply-chain
+      operations;
+    - **future SPECs** own user-facing update UX/policy surfaces.
+11. No production implementation is authorized by this review.
+
+### Items left undecided by this review
+
+- Q-0008 remains `IN RESEARCH`; **NOT DECIDED**.
+- ADR-0001 remains `ACCEPTED`; not reopened. No ADR is created or proposed.
+- R1, R3, R4, R6, R7, R8 and R9 of RES-0007 are not dispositioned beyond
+  the conclusions above; R2 and R5 are recorded only as direction/input as
+  stated.
+- The candidate risks RC-M to RC-S of RES-0007 are **not** registered;
+  the Risk Register is unchanged. No existing risk is closed, downgraded
+  or re-rated; RISK-0010 remains `OPEN` and a **RELEASE BLOCKER FOR M3**.
+- The probes proposed in RES-0007 (P-17 to P-24, and the extensions of
+  P-04, P-06, P-12, P-13 and PX6) are preserved, **not executed**, for
+  0.1C-F unless the Project Owner schedules them otherwise. P-01 remains a
+  pending EARLY FACT-FINDING PROBE, not executed. No VM was started.
+
+### Lifecycle outcome
+
+- RES-0007 → REVIEWED (approved as research).
+- Wave 0.1C-B → READY FOR OWNER CLOSURE (research deliverable reviewed,
+  Project Owner disposition recorded) → **CLOSED** by the Project Owner on
+  2026-09-26 (Closed by: Project Owner; Closure date: 2026-09-26). Closure
+  evidence: the Project Owner's commit that sets the stage status to
+  `CLOSED` in [`FOUNDATION-ROADMAP.md`](../FOUNDATION-ROADMAP.md).
+  Closure preserves RES-0007 = REVIEWED, Q-0008 = IN RESEARCH, all
+  candidate requirements as candidates, all unresolved risks/questions,
+  all probe deferrals and the 0.1C-C / 0.1C-F / 0.1D boundaries.
+- Wave 0.1C remains IN PROGRESS. Waves 0.1C-C and 0.1C-F remain PLANNED
+  and not started; Wave 0.1D remains PLANNED. This review does not start
+  any of them.
