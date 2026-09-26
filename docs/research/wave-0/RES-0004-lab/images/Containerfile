@@ -1,0 +1,8 @@
+# RESEARCH ONLY - NOT PRODUCTION - NOT ELDORA IMPLEMENTATION
+# Build: podman build --build-arg LAB_VER=1 -f Containerfile -t labregistry:5000/eldora-lab:v1 <dir with RPMs>
+FROM quay.io/fedora/fedora-bootc:44
+ARG LAB_VER=1
+COPY eldora-lab-config-${LAB_VER}-1.noarch.rpm /tmp/
+RUN dnf -y install /tmp/eldora-lab-config-${LAB_VER}-1.noarch.rpm && rm -f /tmp/*.rpm && dnf clean all
+LABEL org.opencontainers.image.title="eldora-lab (RESEARCH ONLY)" org.opencontainers.image.version="lab-${LAB_VER}"
+RUN bootc container lint

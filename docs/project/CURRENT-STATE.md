@@ -18,8 +18,14 @@ in [`AGENTS.md`](../../AGENTS.md); they do not duplicate this state.
   - 0.1X — Base Distribution Challenge (extraordinary): CLOSED;
     [RES-0002](../research/wave-0/RES-0002-base-distribution-challenge.md)
     REVIEWED. OB-0004 confirmed for V1 by the Project Owner (D13).
-  - 0.1B — System Image / Root Filesystem / Package Ownership: authorized
-    for preparation; **not started**.
+  - 0.1B — System Image / Root Filesystem / Package Ownership: CLOSED
+    (with sub-stages 0.1B-P and 0.1B-F, all CLOSED by the Project Owner on
+    2026-09-26); RES-0003, RES-0004 and RES-0005 REVIEWED. Outcome:
+    [ADR-0001](../adr/ADR-0001-v1-base-composition-bootc-oci.md) ACCEPTED.
+    Review, working principles P1–P6 and decision:
+    [`reviews/WAVE-0.1B-REVIEW.md`](reviews/WAVE-0.1B-REVIEW.md).
+  - **Next:** 0.1C — Update / Rollback / Recovery: authorized for
+    preparation; **not started**. 0.1D: not started.
   - Review and decisions D13–D16:
     [`reviews/WAVE-0.1A-0.1X-REVIEW.md`](reviews/WAVE-0.1A-0.1X-REVIEW.md).
 - **Wave details:** see [`FOUNDATION-ROADMAP.md`](FOUNDATION-ROADMAP.md)
@@ -41,6 +47,16 @@ Founding premises established by the Project Owner are recorded in
   principal upstream family; CentOS Stream/EPEL are not the base and are
   not selected.
 
+## Accepted architecture decisions
+
+- **Base composition:** M3 — Fedora-derived image-based system using
+  bootc/OCI — **SELECTED FOR V1**
+  ([ADR-0001](../adr/ADR-0001-v1-base-composition-bootc-oci.md), accepted by
+  the Project Owner on 2026-09-26; resolves Q-0001). M1 (package-based) is
+  the documented fallback/contingency; M2/M2b are technical references.
+  Conditions C1–C9 apply; RISK-0010 is a release blocker for M3.
+- Fedora-derived V1 (OB-0004): CONFIRMED.
+
 ## Not selected
 
 Each item is an open question in the
@@ -48,8 +64,7 @@ Each item is an open question in the
 
 | Topic | Question | Wave |
 |---|---|---|
-| Base-system composition within the Fedora ecosystem (in research; RES-0001 REVIEWED: bootc/OCI principal candidate, package-based mandatory fallback, neither selected) | Q-0001 | 0.1 |
-| System/base-image update and rollback architecture (in research; RES-0001 REVIEWED) | Q-0008 | 0.1 |
+| System/base-image update and rollback architecture (constrained by ADR-0001; to be researched in Wave 0.1C) | Q-0008 | 0.1 |
 | Desktop environment / compositor (Wayland is a direction to validate) | Q-0002 | 0.2 |
 | UI toolkit | Q-0009 | 0.2 |
 | Application model, distribution and application updates | Q-0003 | 0.3 |
@@ -70,6 +85,13 @@ Active risks (all `OPEN`):
 - RISK-0002 — NVIDIA + Secure Boot validation (probe PX3).
 - RISK-0003 — desktop maturity of the image-based/bootc direction.
 - RISK-0004 — avoiding unnecessary coupling to the base.
+- RISK-0005 — configuration and user/group drift in image-based models (probe PB3).
+- RISK-0006 — no supported persistent host extension in bootc (probe PB2).
+- RISK-0007 — permissive default trust in the image update chain (probe PB5).
+- RISK-0008 — no freshness/anti-rollback guarantee in the OCI update chain.
+- RISK-0009 — insufficiently verified build inputs in signed images.
+- RISK-0010 — silent loss of staged updates on UEFI (`/boot` automount); **release blocker for M3**.
+- RISK-0011 — OS rollback does not roll back the boot chain.
 
 ## Proposed probes
 

@@ -67,7 +67,7 @@ Exit criteria:
 
 ## Wave 0.1 — Fedora-derived Base System Composition
 
-Status: IN PROGRESS (stages 0.1A and 0.1X CLOSED; 0.1B authorized for preparation, not started)
+Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C authorized for preparation, not started)
 Questions: Q-0001, Q-0008
 Baseline: OB-0004 (Eldora OS V1 is Fedora-derived; confirmed for V1 by the Project Owner on 2026-09-26, D13)
 
@@ -156,15 +156,54 @@ existed only pending human review of 0.1X is removed.
 
 #### Wave 0.1B — System Image / Root Filesystem / Package Ownership
 
-Status: PLANNED (authorized for preparation; not started)
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
+Reports: RES-0003, RES-0004, RES-0005 (all REVIEWED)
+Outcome: Q-0001 DECIDED — [ADR-0001](../adr/ADR-0001-v1-base-composition-bootc-oci.md) selects M3 (Fedora-derived image-based system using bootc/OCI) for V1; M1 fallback/contingency; M2/M2b reference. Q-0008 not decided (Wave 0.1C).
 
 Inputs: open questions forwarded by RES-0001 (0.1B list) and the
 considerations in RES-0002; tracked risks RISK-0001 to RISK-0004
 ([`RISK-REGISTER.md`](RISK-REGISTER.md)).
 
+#### Wave 0.1B-P — Composition Validation Probes
+
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
+Report: RES-0004 (REVIEWED)
+Parent: Wave 0.1B
+
+Controlled experimental sub-stage run before any composition decision:
+probes PB2, PB3 and PB5 (priority), with PB1 and PB4 derived from the same
+disposable laboratory environments. All mutable experiments run in
+disposable VMs; the Project Owner's workstation is not modified. It does
+not start Waves 0.1C or 0.1D.
+
+#### Wave 0.1B-F — Composition Final Validation
+
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
+Report: RES-0005 (REVIEWED; accepted as final Wave 0.1B research evidence)
+Parent: Wave 0.1B
+
+Final controlled experimental sub-stage addressing RES-0004 evidence gaps
+E1–E5 (desktop workload on bootc, persistent escape hatch, UEFI/Secure
+Boot/bootloader, Fedora 44→45 rebase, stable UID/GID). Disposable VMs
+only; the Project Owner's workstation is not modified. Ends with the final
+0.1B decision gate (Q19, Q19-A/B/C); it does not select a composition
+model and does not start Waves 0.1C or 0.1D.
+
 #### Wave 0.1C — Update / Rollback / Recovery
 
-Status: PLANNED
+Status: PLANNED (authorized for preparation; not started)
+
+Inputs: ADR-0001 conditions C1–C9; questions forwarded by RES-0003 to
+RES-0005; RISK-0007, RISK-0008, RISK-0010, RISK-0011.
 
 #### Wave 0.1D — Image Build / Boot / Release Pipeline
 

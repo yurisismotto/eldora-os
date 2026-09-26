@@ -1,0 +1,18 @@
+# RESEARCH ONLY - NOT PRODUCTION - NOT ELDORA IMPLEMENTATION
+# Desktop workload image for RES-0005 (GNOME via Fedora Silverblue is a REPRESENTATIVE WORKLOAD ONLY, not an Eldora choice).
+# Build: podman build --build-arg BASE=quay.io/fedora/fedora-silverblue:44 --build-arg LAB_VER=1 -t labregistry:5000/eldora-desk:44-v1 <ctx>
+ARG BASE=quay.io/fedora/fedora-silverblue:44
+FROM ${BASE}
+ARG LAB_VER=1
+ARG REV=0
+COPY LAB5-RPM-KEY-A.asc eldora-lab-config-${LAB_VER}-1.noarch.rpm /tmp/
+# Explicit build-input verification (RISK-0009): refuse the lab RPM unless signed by the lab key.
+RUN rpm --import /tmp/LAB5-RPM-KEY-A.asc && \
+    rpm -K --define '_pkgverify_level all' /tmp/eldora-lab-config-${LAB_VER}-1.noarch.rpm && \
+    dnf -y install /tmp/eldora-lab-config-${LAB_VER}-1.noarch.rpm && rm -f /tmp/*.rpm /tmp/*.asc && dnf clean all
+# LAB HARNESS ONLY: enable sshd so the disposable VM can be driven over SSH (Fedora desktop images do not enable it).
+RUN systemctl enable sshd.service
+# LAB ONLY: revision marker to simulate successive upstream publications of the same channel
+RUN mkdir -p /usr/lib/eldora-lab && echo "rev=${REV}" > /usr/lib/eldora-lab/revision
+LABEL org.opencontainers.image.title="eldora-desk (RESEARCH ONLY)" org.opencontainers.image.version="lab-desk-${LAB_VER}"
+RUN bootc container lint
