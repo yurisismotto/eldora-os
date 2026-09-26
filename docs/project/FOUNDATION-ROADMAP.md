@@ -67,7 +67,7 @@ Exit criteria:
 
 ## Wave 0.1 — Fedora-derived Base System Composition
 
-Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C IN PROGRESS — sub-stage 0.1C-A CLOSED; 0.1C-B, 0.1C-C, 0.1C-F PLANNED)
+Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C IN PROGRESS — sub-stages 0.1C-A and 0.1C-B CLOSED; 0.1C-C, 0.1C-F PLANNED)
 Questions: Q-0001, Q-0008
 Baseline: OB-0004 (Eldora OS V1 is Fedora-derived; confirmed for V1 by the Project Owner on 2026-09-26, D13)
 
@@ -200,7 +200,7 @@ model and does not start Waves 0.1C or 0.1D.
 
 #### Wave 0.1C — Update / Rollback / Recovery
 
-Status: IN PROGRESS (sub-stage 0.1C-A CLOSED; 0.1C-B, 0.1C-C and 0.1C-F PLANNED, not started)
+Status: IN PROGRESS (sub-stages 0.1C-A and 0.1C-B CLOSED; 0.1C-C and 0.1C-F PLANNED, not started)
 Review: [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md)
 
 Inputs: ADR-0001 conditions C1–C9; questions forwarded by RES-0003 to
@@ -233,11 +233,34 @@ P-02 to P-16 planned for 0.1C-F. No probe executed.
 
 #### Wave 0.1C-B — Update Policy, Trust & Freshness Semantics
 
-Status: PLANNED
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
 Parent: Wave 0.1C
+Report: [RES-0007](../research/wave-0/RES-0007-update-policy-trust-freshness-semantics.md) (REVIEWED; approved as research)
+Review: [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md#review-of-res-0007-wave-01c-b)
 
 Scope (from RES-0006, "Questions for later sub-stages"): update policy,
-trust and freshness semantics. Not started.
+trust and freshness semantics. Started on 2026-09-26 on Project Owner
+instruction as read-only architectural research: no implementation, no
+probes (P-01 not executed), no VM. It does not decide health, known-good
+or recovery semantics (0.1C-C) and does not select production signing or
+build infrastructure (0.1D). It does not start 0.1C-C, 0.1C-F or Wave
+0.1D.
+
+Outcome (Project Owner review, 2026-09-26): RES-0007 REVIEWED; conclusions
+recorded in the review record (H1 and H4 REFUTED; H5 accepted with
+conditions; R2 accepted as architectural direction for later decision;
+Part 16 anti-rollback principles are mandatory input to 0.1C-C, not a
+final ADR; metadata framework OPEN, established frameworks preferred;
+compromise recovery a first-class 0.1D requirement). R1–R9 are not final
+decisions; candidate requirements are not accepted; no implementation
+authorised. Q-0008 remains IN RESEARCH (not decided); ADR-0001 not
+reopened; no ADR created; candidate risks RC-M to RC-S not registered;
+probes P-17 to P-24 preserved for 0.1C-F, none executed. Stage closed
+by the Project Owner on 2026-09-26; closure does not start 0.1C-C, 0.1C-F
+or Wave 0.1D.
 
 #### Wave 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics
 
