@@ -67,7 +67,7 @@ Exit criteria:
 
 ## Wave 0.1 — Fedora-derived Base System Composition
 
-Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C authorized for preparation, not started)
+Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C IN PROGRESS — sub-stage 0.1C-A CLOSED; 0.1C-B, 0.1C-C, 0.1C-F PLANNED)
 Questions: Q-0001, Q-0008
 Baseline: OB-0004 (Eldora OS V1 is Fedora-derived; confirmed for V1 by the Project Owner on 2026-09-26, D13)
 
@@ -200,10 +200,60 @@ model and does not start Waves 0.1C or 0.1D.
 
 #### Wave 0.1C — Update / Rollback / Recovery
 
-Status: PLANNED (authorized for preparation; not started)
+Status: IN PROGRESS (sub-stage 0.1C-A CLOSED; 0.1C-B, 0.1C-C and 0.1C-F PLANNED, not started)
+Review: [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md)
 
 Inputs: ADR-0001 conditions C1–C9; questions forwarded by RES-0003 to
 RES-0005; RISK-0007, RISK-0008, RISK-0010, RISK-0011.
+
+Decomposition confirmed by the Project Owner on 2026-09-26 (scope
+definition, not an architectural or product-policy decision): 0.1C-A,
+0.1C-B, 0.1C-C and 0.1C-F below.
+
+#### Wave 0.1C-A — Update State Machine & Failure Semantics
+
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
+Parent: Wave 0.1C
+Report: [RES-0006](../research/wave-0/RES-0006-update-state-machine-failure-semantics.md) (REVIEWED; approved with editorial corrections)
+
+Read-only architectural research: the real bootc/OSTree update state
+machine, observability, failure semantics (F01–F26), re-analysis of
+RISK-0010, success/boot-success semantics, persistent state, trust and
+freshness boundaries. No failure-injection probes are executed in this
+sub-stage; proposed probes are forwarded to a later sub-stage. It does not
+start 0.1C-B, 0.1C-C, 0.1C-F or Wave 0.1D.
+
+Outcome: Q-0008 remains IN RESEARCH (not decided); ADR-0001 not reopened;
+RISK-0010 remains OPEN / release blocker for M3; RISK-0012 to RISK-0016
+registered (OPEN). Probe P-01 promoted to an early fact-finding probe;
+P-02 to P-16 planned for 0.1C-F. No probe executed.
+
+#### Wave 0.1C-B — Update Policy, Trust & Freshness Semantics
+
+Status: PLANNED
+Parent: Wave 0.1C
+
+Scope (from RES-0006, "Questions for later sub-stages"): update policy,
+trust and freshness semantics. Not started.
+
+#### Wave 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics
+
+Status: PLANNED
+Parent: Wave 0.1C
+
+Scope (from RES-0006, "Questions for later sub-stages"): health,
+known-good, rollback and recovery semantics. Not started.
+
+#### Wave 0.1C-F — Experimental Validation & Failure Injection
+
+Status: PLANNED
+Parent: Wave 0.1C
+
+Scope: experimental validation and failure injection, including probes
+P-02 to P-16 proposed in RES-0006. Not started.
 
 #### Wave 0.1D — Image Build / Boot / Release Pipeline
 

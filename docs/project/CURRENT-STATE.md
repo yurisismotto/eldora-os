@@ -24,8 +24,21 @@ in [`AGENTS.md`](../../AGENTS.md); they do not duplicate this state.
     [ADR-0001](../adr/ADR-0001-v1-base-composition-bootc-oci.md) ACCEPTED.
     Review, working principles P1–P6 and decision:
     [`reviews/WAVE-0.1B-REVIEW.md`](reviews/WAVE-0.1B-REVIEW.md).
-  - **Next:** 0.1C — Update / Rollback / Recovery: authorized for
-    preparation; **not started**. 0.1D: not started.
+  - 0.1C — Update / Rollback / Recovery: IN PROGRESS. Decomposition
+    confirmed by the Project Owner (scope definition):
+    - 0.1C-A — Update State Machine & Failure Semantics: CLOSED (by the
+      Project Owner on 2026-09-26);
+      [RES-0006](../research/wave-0/RES-0006-update-state-machine-failure-semantics.md)
+      REVIEWED (approved with editorial corrections). Read-only research;
+      no probes executed. Review:
+      [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md).
+    - 0.1C-B — Update Policy, Trust & Freshness Semantics: PLANNED; not
+      started.
+    - 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics: PLANNED;
+      not started.
+    - 0.1C-F — Experimental Validation & Failure Injection: PLANNED; not
+      started.
+  - 0.1D: not started.
   - Review and decisions D13–D16:
     [`reviews/WAVE-0.1A-0.1X-REVIEW.md`](reviews/WAVE-0.1A-0.1X-REVIEW.md).
 - **Wave details:** see [`FOUNDATION-ROADMAP.md`](FOUNDATION-ROADMAP.md)
@@ -92,6 +105,11 @@ Active risks (all `OPEN`):
 - RISK-0009 — insufficiently verified build inputs in signed images.
 - RISK-0010 — silent loss of staged updates on UEFI (`/boot` automount); **release blocker for M3**.
 - RISK-0011 — OS rollback does not roll back the boot chain.
+- RISK-0012 — abrupt power loss / hard reset after staging, before finalization, silently loses update intent.
+- RISK-0013 — booted is not healthy/known-good; no upstream health gate.
+- RISK-0014 — rollback runs older code over forward-migrated `/var`/`$HOME` state.
+- RISK-0015 — automatic updates re-apply a bad update after rollback (loops).
+- RISK-0016 — no Eldora-defined recovery path when both deployments or the boot chain fail.
 
 ## Proposed probes
 
@@ -104,6 +122,14 @@ Project Owner (D15, 2026-09-26):
 | PX3 | NVIDIA + Secure Boot | HIGH PRIORITY / HARDWARE GATE | Execute before declaring the corresponding hardware support/certification. |
 | PX6 | CVE fix latency | MEDIUM PRIORITY / DOCUMENTARY VALIDATION | May be executed during Foundation when needed for security/update policy decisions. |
 | PX2, PX4, PX5, PX7, PX8, PX9 | See RES-0002 | PROPOSED | — |
+
+Defined in RES-0006 (Wave 0.1C-A). **None has been executed.** Scheduling
+by the Project Owner (review record 0.1C, 2026-09-26):
+
+| Probe | Subject | Classification | Condition |
+|---|---|---|---|
+| P-01 | RISK-0010 `/boot` layout (H-L1/H-L2) | EARLY FACT-FINDING PROBE | Resolves the H-L1/H-L2 factual uncertainty related to RISK-0010. |
+| P-02 to P-16 | See RES-0006 | PLANNED FOR 0.1C-F | Unless later research documents a reason to re-order them. |
 
 ## Architectural references for future investigation
 
