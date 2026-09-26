@@ -67,7 +67,7 @@ Exit criteria:
 
 ## Wave 0.1 — Fedora-derived Base System Composition
 
-Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C IN PROGRESS — sub-stages 0.1C-A and 0.1C-B CLOSED; 0.1C-C, 0.1C-F PLANNED)
+Status: IN PROGRESS (stages 0.1A, 0.1X and 0.1B CLOSED; Q-0001 DECIDED by ADR-0001; 0.1C IN PROGRESS — sub-stages 0.1C-A, 0.1C-B and 0.1C-C CLOSED; 0.1C-F PLANNED)
 Questions: Q-0001, Q-0008
 Baseline: OB-0004 (Eldora OS V1 is Fedora-derived; confirmed for V1 by the Project Owner on 2026-09-26, D13)
 
@@ -200,7 +200,7 @@ model and does not start Waves 0.1C or 0.1D.
 
 #### Wave 0.1C — Update / Rollback / Recovery
 
-Status: IN PROGRESS (sub-stages 0.1C-A and 0.1C-B CLOSED; 0.1C-C and 0.1C-F PLANNED, not started)
+Status: IN PROGRESS (sub-stages 0.1C-A, 0.1C-B and 0.1C-C CLOSED; 0.1C-F PLANNED, not started)
 Review: [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md)
 
 Inputs: ADR-0001 conditions C1–C9; questions forwarded by RES-0003 to
@@ -264,11 +264,36 @@ or Wave 0.1D.
 
 #### Wave 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics
 
-Status: PLANNED
+Status: CLOSED
+Closed by: Project Owner
+Closure date: 2026-09-26
+Closure evidence: the Project Owner's commit that sets this status to `CLOSED`.
 Parent: Wave 0.1C
+Report: [RES-0008](../research/wave-0/RES-0008-health-known-good-rollback-recovery-semantics.md) (REVIEWED; approved with required semantic corrections)
+Review: [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md#review-of-res-0008-wave-01c-c)
 
-Scope (from RES-0006, "Questions for later sub-stages"): health,
-known-good, rollback and recovery semantics. Not started.
+Scope (from RES-0006, "Questions for later sub-stages", and RES-0007
+requirements HC-1 to HC-8): health, known-good, rollback and recovery
+semantics. Started on 2026-09-26 on Project Owner instruction as
+read-only architectural research: no implementation, no probes (P-01 not
+executed), no VM, no ADR. It does not decide Q-0008 and does not start
+0.1C-F or Wave 0.1D.
+
+Outcome (Project Owner review, 2026-09-26): RES-0008 REVIEWED with
+required semantic corrections A1–A5 applied (KNOWN_GOOD as historical
+evidence; owner override never fabricates known-good evidence; profile
+requirements absolute with the previous-known-good baseline as additional
+evidence; no destruction of rollback compatibility before KNOWN_GOOD;
+independent verified recovery path as direction, implementation not
+selected). RC-Y resolved as Project Owner direction (ADR input). H1–H8
+dispositions accepted as research results. Candidate requirements
+accepted only as input/architectural direction; attempt count and dwell
+parameters undecided (0.1C-F evidence); reset/reinstall preservation
+defaults deferred. RISK-0017 to RISK-0022 registered (OPEN); RC-T avoided
+by design direction; RC-AA deferred; RES-0007 RC-M to RC-S dispositioned.
+Q-0008 remains IN RESEARCH (not decided); ADR-0001 not reopened; no ADR
+created; no probe executed. Stage closed by the Project Owner on
+2026-09-26; closure does not start 0.1C-F or Wave 0.1D.
 
 #### Wave 0.1C-F — Experimental Validation & Failure Injection
 

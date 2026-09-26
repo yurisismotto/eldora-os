@@ -39,8 +39,14 @@ in [`AGENTS.md`](../../AGENTS.md); they do not duplicate this state.
       probe executed; R1–R9 are not final decisions; no implementation
       authorised. Review and Project Owner conclusions:
       [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md#review-of-res-0007-wave-01c-b).
-    - 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics: PLANNED;
-      not started.
+    - 0.1C-C — Health, Known-Good, Rollback & Recovery Semantics: CLOSED
+      (by the Project Owner on 2026-09-26);
+      [RES-0008](../research/wave-0/RES-0008-health-known-good-rollback-recovery-semantics.md)
+      REVIEWED (approved with required semantic corrections, 2026-09-26).
+      Read-only research; no probe executed; no VM; candidate
+      requirements accepted only as input/architectural direction; no
+      implementation authorised. Review and Project Owner dispositions:
+      [`reviews/WAVE-0.1C-REVIEW.md`](reviews/WAVE-0.1C-REVIEW.md#review-of-res-0008-wave-01c-c).
     - 0.1C-F — Experimental Validation & Failure Injection: PLANNED; not
       started.
   - 0.1D: not started.
@@ -115,6 +121,12 @@ Active risks (all `OPEN`):
 - RISK-0014 — rollback runs older code over forward-migrated `/var`/`$HOME` state.
 - RISK-0015 — automatic updates re-apply a bad update after rollback (loops).
 - RISK-0016 — no Eldora-defined recovery path when both deployments or the boot chain fail.
+- RISK-0017 — failed boots hang (Fedora defaults), defeating loader-level automatic rollback.
+- RISK-0018 — staging before known-good evicts the last known-good deployment.
+- RISK-0019 — monotonic SBAT revocation can make older boot chains/recovery media unbootable.
+- RISK-0020 — no durable evidence for failures before `/var`/journal flush.
+- RISK-0021 — a signed security floor can forbid every retained rollback deployment.
+- RISK-0022 — GRUB/greenboot fallback to the second menu entry may not match the intended target.
 
 ## Proposed probes
 
@@ -142,6 +154,13 @@ at Project Owner review (review record 0.1C, 2026-09-26):
 | Probe | Subject | Classification | Condition |
 |---|---|---|---|
 | P-17 to P-24; extensions of P-04, P-06, P-12, P-13, PX6 | See RES-0007 | PROPOSED; preserved for 0.1C-F | Unless the Project Owner schedules them otherwise. |
+
+Proposed in RES-0008 (Wave 0.1C-C). **None has been executed.** Preserved
+at Project Owner review (review record 0.1C, 2026-09-26):
+
+| Probe | Subject | Classification | Condition |
+|---|---|---|---|
+| P-25 to P-31; extensions of P-08, P-11 | See RES-0008 | PROPOSED; preserved for 0.1C-F | Attempt count, dwell parameters, Fedora GRUB/greenboot fallback, boot termination, pinning/retention, SBAT/recovery media and evidence survival remain probe-dependent. |
 
 ## Architectural references for future investigation
 
