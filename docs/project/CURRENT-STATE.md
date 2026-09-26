@@ -10,9 +10,18 @@ in [`AGENTS.md`](../../AGENTS.md); they do not duplicate this state.
 - **Phase:** Foundation (Wave 0)
 - **Wave 0.0 — Project Governance & Research Foundation:** CLOSED
   (closed by the Project Owner on 2026-09-26)
-- **Next stage, authorized for preparation:** Wave 0.1 — Fedora-derived
-  Base System Composition. Wave 0.1 has not started; no Wave 0.1 research
-  exists yet.
+- **Current stage:** Wave 0.1 — Fedora-derived Base System Composition:
+  IN PROGRESS.
+  - 0.1A — Fedora Ecosystem & Base-System Composition Models: CLOSED;
+    [RES-0001](../research/wave-0/RES-0001-fedora-base-system-composition-models.md)
+    REVIEWED. No composition model selected.
+  - 0.1X — Base Distribution Challenge (extraordinary): CLOSED;
+    [RES-0002](../research/wave-0/RES-0002-base-distribution-challenge.md)
+    REVIEWED. OB-0004 confirmed for V1 by the Project Owner (D13).
+  - 0.1B — System Image / Root Filesystem / Package Ownership: authorized
+    for preparation; **not started**.
+  - Review and decisions D13–D16:
+    [`reviews/WAVE-0.1A-0.1X-REVIEW.md`](reviews/WAVE-0.1A-0.1X-REVIEW.md).
 - **Wave details:** see [`FOUNDATION-ROADMAP.md`](FOUNDATION-ROADMAP.md)
 
 No production operating-system implementation exists.
@@ -25,7 +34,12 @@ Founding premises established by the Project Owner are recorded in
 - OB-0001 — initial kernel: Linux;
 - OB-0002 — provisional name: Eldora OS (clearance pending);
 - OB-0003 — provisional tagline: Simple. Powerful. Yours. (clearance pending);
-- OB-0004 — Eldora OS V1 is Fedora-derived (V1 scope).
+- OB-0004 — Eldora OS V1 is Fedora-derived (V1 scope); confirmed by the
+  Project Owner on 2026-09-26 (D13). This fixes the base family for V1
+  only; it selects no composition, update, installer, desktop, toolkit or
+  application-model technology. Interpretation (D20): Fedora is the
+  principal upstream family; CentOS Stream/EPEL are not the base and are
+  not selected.
 
 ## Not selected
 
@@ -34,8 +48,8 @@ Each item is an open question in the
 
 | Topic | Question | Wave |
 |---|---|---|
-| Base-system composition within the Fedora ecosystem | Q-0001 | 0.1 |
-| System/base-image update and rollback architecture | Q-0008 | 0.1 |
+| Base-system composition within the Fedora ecosystem (in research; RES-0001 REVIEWED: bootc/OCI principal candidate, package-based mandatory fallback, neither selected) | Q-0001 | 0.1 |
+| System/base-image update and rollback architecture (in research; RES-0001 REVIEWED) | Q-0008 | 0.1 |
 | Desktop environment / compositor (Wayland is a direction to validate) | Q-0002 | 0.2 |
 | UI toolkit | Q-0009 | 0.2 |
 | Application model, distribution and application updates | Q-0003 | 0.3 |
@@ -46,6 +60,34 @@ Each item is an open question in the
 | Brand/trademark clearance | Q-0010 | 0.6 |
 | Definitive Code of Conduct | Q-0011 | 0.6 |
 | Security vulnerability disclosure process | Q-0012 | 0.6 |
+
+## Tracked risks
+
+Full register and convention: [`RISK-REGISTER.md`](RISK-REGISTER.md).
+Active risks (all `OPEN`):
+
+- RISK-0001 — Fedora cadence / no LTS rebase cost (probe PX1).
+- RISK-0002 — NVIDIA + Secure Boot validation (probe PX3).
+- RISK-0003 — desktop maturity of the image-based/bootc direction.
+- RISK-0004 — avoiding unnecessary coupling to the base.
+
+## Proposed probes
+
+Defined in RES-0002. **None has been executed.** Classification by the
+Project Owner (D15, 2026-09-26):
+
+| Probe | Subject | Classification | Condition |
+|---|---|---|---|
+| PX1 | Release-rebase cost | HIGH PRIORITY / FUTURE GATE | Execute before freezing irreversible composition, update or release-lifecycle decisions, once enough material exists for a representative test. |
+| PX3 | NVIDIA + Secure Boot | HIGH PRIORITY / HARDWARE GATE | Execute before declaring the corresponding hardware support/certification. |
+| PX6 | CVE fix latency | MEDIUM PRIORITY / DOCUMENTARY VALIDATION | May be executed during Foundation when needed for security/update policy decisions. |
+| PX2, PX4, PX5, PX7, PX8, PX9 | See RES-0002 | PROPOSED | — |
+
+## Architectural references for future investigation
+
+- GNOME OS / freedesktop-sdk (ALTERNATIVE DISCOVERED in RES-0002): recorded
+  as a reference only (D16). Not a V1 candidate; does not reopen OB-0004;
+  no research started; does not expand Wave 0.1.
 
 ## Working hypothesis: conceptual architecture
 
